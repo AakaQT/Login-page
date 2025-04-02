@@ -63,3 +63,8 @@
     text-decoration: none;
     color: white;
 }
+
+.error {
+    border: solid;
+    border-color: red;
+}
