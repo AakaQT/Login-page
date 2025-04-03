@@ -13,7 +13,6 @@
 .card {
     width: 100%;
     max-width: 500px;
-    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,4 +66,9 @@
 .error {
     border: solid;
     border-color: red;
+}
+
+.email-error-message, .name-error-message, .password-error-message {
+    color: red;
+    display: none;
 }

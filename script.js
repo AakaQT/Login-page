@@ -2,6 +2,9 @@ let emailBox = document.querySelector(".email-box");
 let nameBox = document.querySelector(".name-box");
 let passwordBox = document.querySelector(".password-box");
 let signUpButton = document.querySelector("button");
+let passwordErrorMessage = document.querySelector(".password-error-message");
+let emailErrorMessage = document.querySelector("#email-error-message");
+let nameErrorMessage = document.querySelector(".name-error-message");
 
 function changeBorderColor(element) {
     element.classList.add("error");
@@ -66,6 +69,27 @@ function raiseAlerts() {
     return alerts;
 }
 
+function emailErrorText () {
+    if (inputEmail == false) {
+        return false;
+    }
+    document.querySelector(".email-error-message").style.display = "block";
+}
+
+function passwordErrorText () {
+    if(inputPassword == false) {
+        return false;
+    }
+    document.querySelector(".password-error-message").style.display = "block";
+}
+
+function nameErrorText () {
+    if(inputName == false) {
+        return false;
+    }
+    document.querySelector(".name-error-message").style.display = "block";
+}
+
 function alertPrint(alerts) {
     for (let i = 0; i < alerts.length; i++) {
         alert(alerts[i]);
@@ -74,6 +98,9 @@ function alertPrint(alerts) {
 
 signUpButton.addEventListener('click', () => {
     raiseAlerts();
+    emailErrorText();
+    passwordErrorText();
+    nameErrorText();
     alertPrint(raiseAlerts());
 })
 
