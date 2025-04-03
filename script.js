@@ -91,7 +91,7 @@ function nameLengthErrorText(){
 }
 
 function signUpLink() {
-    if(inputEmail() == true && inputName() == true && inputPassword() == true && nameLengthErrorText()){
+    if(inputEmail() == true && inputName() == true && inputPassword() == true && nameLengthErrorText() == true && passwordLength() == true){
         window.location.href = "signed-up-page.html";
     }
 }
@@ -101,10 +101,6 @@ function logInLink(){
         window.location.href = "logged-in-page.html";
     }
 }
-
-/*function logOutLink(){
-    window.location.href = "index.html";
-}*/
 
 signUpButton.addEventListener('click', () => {
     inputName();
