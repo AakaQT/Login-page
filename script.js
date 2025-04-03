@@ -1,108 +1,91 @@
 let emailBox = document.querySelector(".email-box");
+let emailBoxError = document.querySelector(".email-error-message");
 let nameBox = document.querySelector(".name-box");
+let nameBoxError = document.querySelector(".name-error-message");
 let passwordBox = document.querySelector(".password-box");
+let passwordLengthError = document.querySelector(".password-length-error");
+let passwordBoxError = document.querySelector(".password-error-message");
 let signUpButton = document.querySelector("button");
-let passwordErrorMessage = document.querySelector(".password-error-message");
-let emailErrorMessage = document.querySelector("#email-error-message");
-let nameErrorMessage = document.querySelector(".name-error-message");
+
 
 function changeBorderColor(element) {
     element.classList.add("error");
 }
 
-function inputEmail() {
-    if (emailBox.value === "") {
+function inputEmail (){
+    if(emailBox.value === "") {
         changeBorderColor(emailBox);
-        return "Email field is empty";
+        return false;
     }
-    return false;
-}
+} 
 
-function inputPassword () {
-    if(passwordBox.value === "") {
+function inputPassword(){
+    if(passwordBox.value === ""){
         changeBorderColor(passwordBox);
-
-        return "Password field is empty";
+        return false;
     }
-    return false;
-}
-
-function inputName () {
-    if(nameBox.value === ""){
-        changeBorderColor(nameBox);
-        return "Name field is empty";
-    }
-    return false;
 }
 
 function passwordLength(){
-    if(passwordBox.value.length < 8) {
-        changeBorderColor(passwordBox)
-        return "Password is shorter than 8 characters";
+    if(passwordBox.value.length < 8){
+        changeBorderColor(passwordBox);
+        return false
     }
-    return false;
-} 
-
-function raiseAlerts() {
-    let alerts = [];
-    let temp = inputEmail();
-
-    if(temp != false) {
-        alerts.push(temp);
-    }
-    temp = inputPassword();
-
-    if(temp != false) {
-        alerts.push(temp);
-    }
-    temp = inputName();
-
-    if(temp != false) {
-        alerts.push(temp);
-    }
-    temp = passwordLength();
-
-    if (temp != false) {
-        alerts.push(temp);
-    }
-
-    return alerts;
 }
 
-function emailErrorText () {
-    if (inputEmail == false) {
+function inputName(){
+    if(nameBox.value === ""){
+        changeBorderColor(nameBox);
         return false;
     }
-    document.querySelector(".email-error-message").style.display = "block";
 }
 
-function passwordErrorText () {
-    if(inputPassword == false) {
-        return false;
+function emailErrorText(){
+    if(inputEmail() == false) {
+        emailBoxError.style.display = "block";
     }
-    document.querySelector(".password-error-message").style.display = "block";
 }
 
-function nameErrorText () {
-    if(inputName == false) {
-        return false;
+function passwordErrorText(){
+    if(inputPassword() == false) {
+        passwordBoxError.style.display = "block";
     }
-    document.querySelector(".name-error-message").style.display = "block";
 }
 
-function alertPrint(alerts) {
-    for (let i = 0; i < alerts.length; i++) {
-        alert(alerts[i]);
+function nameErrorText(){
+    if(inputName() == false){
+        nameBoxError.style.display = "block";
+    }
+}
+
+function passwordLengthErrorText(){
+    if(passwordLength() == false){
+        passwordLengthError.style.display = "block";
     }
 }
 
 signUpButton.addEventListener('click', () => {
-    raiseAlerts();
-    emailErrorText();
-    passwordErrorText();
+    inputName();
     nameErrorText();
-    alertPrint(raiseAlerts());
+    inputPassword();
+    passwordErrorText();
+    inputEmail();
+    emailErrorText();
+    passwordLength();
+    passwordLengthErrorText();
 })
 
-
+emailBox.addEventListener('click', () => {
+    emailBox.classList.remove("error");
+    emailBoxError.style.display = "none";
+})
+passwordBox.addEventListener('click', () => {
+    passwordBox.classList.remove("error");
+    passwordBoxError.style.display = "none";
+    passwordLengthError.style.display = "none";
+})
+nameBox.addEventListener('click', () => {
+    nameBox.classList.remove("error");
+    nameBoxError.style.display = "none";
+})
 

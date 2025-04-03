@@ -68,7 +68,7 @@
     border-color: red;
 }
 
-.email-error-message, .name-error-message, .password-error-message {
+.email-error-message, .name-error-message, .password-error-message, .password-length-error {
     color: red;
     display: none;
 }
