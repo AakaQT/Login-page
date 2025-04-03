@@ -7,7 +7,8 @@ let passwordBox = document.querySelector(".password-box");
 let passwordLengthError = document.querySelector(".password-length-error");
 let passwordBoxError = document.querySelector(".password-error-message");
 let signUpButton = document.querySelector(".button");
-let LogInButton = document.querySelector(".button");
+let logInButton = document.querySelector(".button-links");
+let logOutButton = document.querySelector(".log-out-button");
 
 
 function changeBorderColor(element) {
@@ -19,12 +20,18 @@ function inputEmail (){
         changeBorderColor(emailBox);
         return false;
     }
+    else{
+        return true;
+    }
 } 
 
 function inputPassword(){
     if(passwordBox.value === ""){
         changeBorderColor(passwordBox);
         return false;
+    }
+    else{
+        return true;
     }
 }
 
@@ -33,12 +40,18 @@ function passwordLength(){
         changeBorderColor(passwordBox);
         return false
     }
+    else{
+        return true;
+    }
 }
 
 function inputName(){
     if(nameBox.value === ""){
         changeBorderColor(nameBox);
         return false;
+    }
+    else {
+        return true;
     }
 }
 
@@ -72,7 +85,26 @@ function nameLengthErrorText(){
         nameLengthError.style.display = "block";
         return false;
     }
+    else{
+        return true;
+    }
 }
+
+function signUpLink() {
+    if(inputEmail() == true && inputName() == true && inputPassword() == true && nameLengthErrorText()){
+        window.location.href = "signed-up-page.html";
+    }
+}
+
+function logInLink(){
+    if(inputEmail() == true && inputPassword() == true){
+        window.location.href = "logged-in-page.html";
+    }
+}
+
+/*function logOutLink(){
+    window.location.href = "index.html";
+}*/
 
 signUpButton.addEventListener('click', () => {
     inputName();
@@ -84,13 +116,19 @@ signUpButton.addEventListener('click', () => {
     emailErrorText();
     passwordLength();
     passwordLengthErrorText();
+    signUpLink();
 })
 
-LogInButton.addEventListener('click', () => {
+logInButton.addEventListener('click', () => {
     inputPassword();
     passwordErrorText();
     inputEmail();
     emailErrorText();
+    logInLink();
+})
+
+logOutButton.addEventListener('click', () => {
+    logOutLink();
 })
 
 emailBox.addEventListener('click', () => {
