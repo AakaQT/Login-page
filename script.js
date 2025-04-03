@@ -2,10 +2,12 @@ let emailBox = document.querySelector(".email-box");
 let emailBoxError = document.querySelector(".email-error-message");
 let nameBox = document.querySelector(".name-box");
 let nameBoxError = document.querySelector(".name-error-message");
+let nameLengthError = document.querySelector(".name-length-error");
 let passwordBox = document.querySelector(".password-box");
 let passwordLengthError = document.querySelector(".password-length-error");
 let passwordBoxError = document.querySelector(".password-error-message");
-let signUpButton = document.querySelector("button");
+let signUpButton = document.querySelector(".button");
+let LogInButton = document.querySelector(".button");
 
 
 function changeBorderColor(element) {
@@ -64,8 +66,17 @@ function passwordLengthErrorText(){
     }
 }
 
+function nameLengthErrorText(){
+    if(nameBox.value.length > 30){
+        changeBorderColor(nameBox);
+        nameLengthError.style.display = "block";
+        return false;
+    }
+}
+
 signUpButton.addEventListener('click', () => {
     inputName();
+    nameLengthErrorText();
     nameErrorText();
     inputPassword();
     passwordErrorText();
@@ -73,6 +84,13 @@ signUpButton.addEventListener('click', () => {
     emailErrorText();
     passwordLength();
     passwordLengthErrorText();
+})
+
+LogInButton.addEventListener('click', () => {
+    inputPassword();
+    passwordErrorText();
+    inputEmail();
+    emailErrorText();
 })
 
 emailBox.addEventListener('click', () => {

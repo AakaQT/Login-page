@@ -3,6 +3,8 @@
 
 * {
     font-family: "Poppins", sans-serif;
+    padding: 0;
+    margin: 0;
 }
 .body {
     margin: 0;
@@ -68,7 +70,33 @@
     border-color: red;
 }
 
-.email-error-message, .name-error-message, .password-error-message, .password-length-error {
+.email-error-message, .name-error-message, .password-error-message, .password-length-error, .name-length-error {
     color: red;
     display: none;
 }
+
+.heading {
+    font-size: 80px;
+    
+}
+
+
+.button-margin-padding-0 {
+    margin: 0;
+    max-width: 100%;
+}
+
+.background {
+    background: linear-gradient(to right, #8f94fb, #4e54c8); 
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.content {
+    position: relative;
+    top: 100px;
+}
+
