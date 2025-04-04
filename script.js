@@ -139,5 +139,6 @@ passwordBox.addEventListener('click', () => {
 nameBox.addEventListener('click', () => {
     nameBox.classList.remove("error");
     nameBoxError.style.display = "none";
+    nameLengthError.style.display = "none";
 })
 
